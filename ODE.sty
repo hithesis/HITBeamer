@@ -1,0 +1,226 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ODE}[20200511 v0.2 test]
+% 增加了 minted 宏包.
+%设定字体
+% \RequirePackage{fontspec}
+% \RequirePackage[T1]{fontenc}
+% \RequirePackage{noto}
+% \setCJKmainfont[ItalicFont=STKaiti]{Source Han Serif CN}
+\setCJKmainfont{Source Han Serif SC}
+\setCJKsansfont{Source Han Sans SC}
+\setmonofont{JetBrains Mono}
+
+%% \textbf为思源宋体
+
+% \setCJKmainfont[BoldFont=黑体, ItalicFont=STKaiti]{Source Han Serif CN}
+%% \textbf为中易黑体
+
+%% \setCJKsansfont{Source Han Sans CN}
+%% \setCJKmonofont{Source Han Sans CN}
+%% \setCJKfamilyfont{boldsong}{Source Han Serif CN Heavy}
+% \normalspacedchars{*}
+%数学式
+\RequirePackage{mathtools,extarrows,unicode-math} %数学式宏包, 更多箭头, 黑板体等数学字体,leqslant等符号
+\unimathsetup{bold-style=ISO}
+\setmathfont{latinmodern-math.otf}[]
+\setmathfont{texgyrepagella-math.otf}[range=bb]
+\setmathfont{XITSMath-Regular.otf}[range={"02205, "029F5}]
+% \setmathfont{xits-math.otf}[range=cal,StylisticSet=1]
+% \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\RequirePackage{siunitx, physics}
+\RequirePackage{amsthm} %定理环境
+\RequirePackage{nicematrix}
+% \numberwithin{equation}{section}
+\RequirePackage[boxed]{algorithm2e}
+\SetAlgorithmName{算法}{算法}{算法列表}
+\RestyleAlgo{algoruled}
+
+
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\fin}{fin}
+\DeclareMathOperator{\esssup}{ess\,sup}
+\DeclareMathOperator{\conv}{Conv}
+\DeclareMathOperator{\Span}{span} %% 因为\span已经在宏中定义, 这里使用大写的\Span来表示线性张成
+\DeclareMathOperator{\cont}{Cont} %% 表示函数的连续点
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\convba}{Convba}
+
+
+\newcommand{\me}{\ensuremath{\mathrm{e}}}
+\newcommand{\imag}{\mathrm{i}}
+\newcommand{\Star}[1]{#1^{*}}
+\newcommand{\1}{\mathds{1}}
+
+%% \C已被定义, 重定义在交叉引用部分
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\J}{\ensuremath{\mathbb{J}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\NN}{\ensuremath{\mathbb{N}^{*}}}
+\newcommand{\K}{\ensuremath{\mathbb{K}}}
+\newcommand{\id}{\mathrm{id}}
+
+%% \mathcal
+\newcommand{\CA}{\mathcal{A}}
+\newcommand{\CB}{\mathcal{B}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\CD}{\mathcal{D}}
+\newcommand{\CE}{\mathcal{E}}
+\newcommand{\CF}{\mathcal{F}}
+\newcommand{\CG}{\mathcal{G}}
+\newcommand{\CH}{\mathcal{H}}
+\newcommand{\CI}{\mathcal{I}}
+\newcommand{\CJ}{\mathcal{J}}
+\newcommand{\CK}{\mathcal{K}}
+\newcommand{\CL}{\mathcal{L}}
+\newcommand{\CM}{\mathcal{M}}
+\newcommand{\CN}{\mathcal{N}}
+\newcommand{\CO}{\mathcal{O}}
+\newcommand{\CP}{\mathcal{P}}
+\newcommand{\CQ}{\mathcal{Q}}
+\newcommand{\CR}{\mathcal{R}}
+\newcommand{\CS}{\mathcal{S}}
+\newcommand{\CT}{\mathcal{T}}
+\newcommand{\CU}{\mathcal{U}}
+\newcommand{\CV}{\mathcal{V}}
+\newcommand{\CW}{\mathcal{W}}
+\newcommand{\CX}{\mathcal{X}}
+\newcommand{\CY}{\mathcal{Y}}
+\newcommand{\CZ}{\mathcal{Z}}
+
+
+\renewcommand{\Re}{\mathrm{Re\,}}
+\renewcommand{\Im}{\mathrm{Im\,}}
+\newcommand{\sgn}{\mathrm{sgn}\,}
+\newcommand{\diff}{\,\mathrm{d}}
+
+\newcommand{\Fs}{\ensuremath{\CF_{\sigma}}}
+\newcommand{\Gd}{\ensuremath{\CG_{\delta}}}
+\newcommand{\Fr}{\ensuremath{\CF_{r}}}
+
+
+\RequirePackage{tasks}
+\NewTasksEnvironment[label={(\arabic*)}, item-indent=4em, label-offset=1em]{lpbn}(2)
+% \NewTasksEnvironment[counter-format=(tsk[a]), item-indent=2em, label-offset=1em]{alpbn}
+% \NewTasksEnvironment[counter-format=tsk[A].]{xrze}[*]
+
+%版式
+\RequirePackage{geometry} %边距
+\geometry{a4paper,hmargin=2.5cm,vmargin=2cm}
+%\RequirePackage[a4paper,left=1.8cm,right=3.2cm,top=2.5cm,bottom=2cm]{geometry} %当打印时使用此选项
+\setlength{\headheight}{13pt}
+
+\RequirePackage{fancyhdr} 	% 页眉页脚
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[OL]{\nouppercase\rightmark}
+\fancyhead[ER]{\nouppercase\leftmark}
+\fancyhead[OR,EL]{\thepage}
+\fancyfoot[C]{}
+
+\RequirePackage{tocbibind}
+\RequirePackage{imakeidx}
+
+%辅助
+\RequirePackage{array,diagbox,booktabs,tabularx, subfig} 
+%数组环境, 表格中可以添加对角线, 可以调整表格中线的宽度, 可以控制表格宽度并使其自动换行, 子图
+\RequirePackage[shortlabels]{enumitem} % 继承并扩展了enumerate宏包的功能
+\setlist[enumerate, 1]{left=\parindent..0pt, noitemsep, itemindent=2\parindent, listparindent=\parindent, label=(\arabic*)}
+\RequirePackage{textcomp}
+\usepackage[newfloat]{minted}
+\setminted[matlab]{
+    breaklines=true,
+    breakanywhere=true,
+    frame=single,
+    autogobble, 
+}
+\setminted[text]{
+    breaklines=true,
+    breakanywhere=true,
+    autogobble, 
+}
+\DeclareFloatingEnvironment{code}
+
+%交叉引用
+\RequirePackage{nameref}
+\RequirePackage{prettyref}
+\RequirePackage[colorlinks, linkcolor=red]{hyperref}
+\RequirePackage{graphicx}
+\newcommand{\C}{\ensuremath{\mathbb{C}}} 
+
+%新定义定理环境类型
+\newtheoremstyle{normal}% name
+{4pt}% Space above
+{2pt}% Space below
+{}% Body font
+{2em}% Indent amount
+{\bfseries}% Theorem head font
+{}% Punctuation after theorem head
+{1em}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning `normal' )
+\newtheoremstyle{prsol}% name
+{2pt}% Space above
+{4pt}% Space below
+{}% Body font
+{2em}% Indent amount
+{\bfseries}% Theorem head font
+{}% Punctuation after theorem head
+{1em}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning `normal' )
+\newtheoremstyle{Thm}% hnamei
+{3pt}% Space above
+{3pt}% Space below
+{\kaishu}% Body font
+{2em}% Indent amount
+{\bfseries}% Theorem head font
+{}% Punctuation after theorem head
+{1em}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning `normal' )
+
+%新定义定理环境
+\theoremstyle{normal}
+% %\theoremstyle{Thm}
+% \newtheorem{Theorem}[MA]{定理}
+% \newtheorem{Theoremn}{定理}
+% \renewcommand{\theTheoremn}{\theMA$'$}
+% \newtheorem{Lemma}[MA]{引理}
+% \newtheorem{Definition}[MA]{定义}
+% \newtheorem{Definitionn}{定义}
+% \renewcommand{\theDefinitionn}{\theMA$'$}
+% \newtheorem{Corollary}[MA]{推论}
+% \newtheorem{Example}[MA]{例}
+\newtheorem{Remark}{Remark}
+% \newtheorem{Proposition}[MA]{命题}
+\theoremstyle{prsol}
+\newtheorem*{Solution}{Solution}
+\newtheorem*{Proof}{Proof}
+
+
+%新定义命令
+\newcommand{\Sum}[2]{\sum_{#1}^{#2}}
+% \newcommand{\abs}[1]{\ensuremath{\left| #1 \right| }}
+% \newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+% \newcommand{\tabs}[1]{\ensuremath{\lvert #1\rvert}}
+% \newcommand{\tnorm}[1]{\ensuremath{\lVert #1\rVert}}
+\newcommand{\Babs}[1]{\ensuremath{\Big| #1 \Big| }}
+\newcommand{\Bnorm}[1]{\ensuremath{\Big\| #1 \Big\|}}
+\newcommand{\lrangle}[1]{\left\langle #1 \right\rangle}
+\newcommand{\degree}{\ensuremath{^{\circ}}}
+\newcommand{\sm}{\ensuremath{\setminus}}
+\newcommand{\baro}[1]{\overline{#1}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+% \newcommand{\weakto}{\ensuremath{\overset{w.}{\longrightarrow}}}
+% \newcommand{\sweakto}{\ensuremath{\overset{\Star{w.}}{\longrightarrow}}}
+\newcommand{\seq}[2][n]{\ensuremath{{#2}_{1}, {#2}_{2}, \dots, #2_{#1}}}
+% \renewcommand{\emph}[1]{\textbf{#1}}
+\newcommand{\limit}[2]{\ensuremath{\lim\limits_{#1\to #2}}}
+% \newcommand{\vicinity}[2]{\ensuremath{B_{#2}\left(#1\right)}}
+% \newcommand{\ovicinity}[2]{\ensuremath{B_{#2}\left(\v{#1}\right)}}
+% \newcommand{\Case}[1]{\emph{(Case #1)}}
+\newcommand{\Step}[1]{\emph{(Step #1)}}
+
+\newcommand{\mt}[1]{\mintinline{text}{#1}}
+\newcommand{\mm}[1]{\mintinline{matlab}{#1}}

@@ -1,0 +1,47 @@
+\usepackage{ctex}
+\hypersetup{colorlinks,linkcolor=,urlcolor=magenta}
+% \usepackage[T1]{fontenc}
+
+% other packages
+\usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
+\usepackage{graphicx,pstricks,listings,stackengine}
+\usepackage{physics, tikz}
+\usefonttheme[stillsansserifmath]{serif}
+\usepackage[bold-style=ISO]{unicode-math}
+\setmathfont{Fira Math}
+\setCJKmainfont{Source Han Sans SC}
+\setCJKsansfont{Source Han Sans SC}
+\setmonofont{Fira Code}
+\setmainfont{Fira Sans}
+\renewcommand{\footnotesize}{\fontsize{6}{7.2}\selectfont}
+\usepackage{minted}
+\setminted{
+    fontsize    = \fontsize{7}{8.4}\selectfont,
+    frame       = single,
+    linenos     = true,
+    breaklines  = true,
+    breakanywhere = true,
+    autogobble  = true
+}
+
+% \usepackage[shortlabels]{enumitem}
+% defs
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+
+\def\cmd#1{\texttt{\color{red}\small $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\small #1}}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{halfgray}{gray}{0.55}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries\color{deepblue},
+    emphstyle=\ttfamily\color{deepred},    % Custom highlighting style
+    stringstyle=\color{deepgreen},
+    numbers=left,
+    numberstyle=\small\color{halfgray},
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    frame=shadowbox,
+}

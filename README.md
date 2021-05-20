@@ -50,3 +50,6 @@ latexmk -pvc-
 $preview_continuous_mode = 1;
 ``` 
 删除来永久删除此功能.
+
+## 开源协议
+本文档遵循 LPPL (The LaTeX Project Public License) Version 1.3c  及以后的开源协议.

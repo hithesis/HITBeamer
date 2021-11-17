@@ -55,7 +55,7 @@
 
 \begin{frame}{这一份主题与 THU Beamer Theme 区别在于}
     \begin{itemize}
-        \item 全文使用无衬线体, 中文使用思源黑体, 英文使用 Fira Sans, 公式使用 unicode-math 搭配 Fira Math 字体. 下载及使用方法请看  \href{https://github.com/syvshc/HITBeamer\#readme}{README}
+        \item 全文使用无衬线体, 中文使用思源黑体, 英文使用 FiraGO, 公式使用 unicode-math 搭配 Fira Math 字体. 下载及使用方法请看  \href{https://github.com/syvshc/HITBeamer\#readme}{README}
         \item 修改了颜色为我也不知道应该叫什么的颜色
         \item 校徽改为了哈工大校徽
         \item 放弃了不显示小标题的 \href{https://github.com/Trinkle23897/THU-Beamer-Theme/commit/061f088d1c7e4b2d2f1f581f3745945ecbb63f25}{commit}, 如果有需要请自行按照该 commit 修改 \mintinline{text}{HIT.sty}
@@ -156,7 +156,7 @@
     \begin{exampleblock}{环境}
         \centering
         \small
-        \begin{tabular}{lll}
+        \begin{tabular}{lll}\hline
             \env{table} & \env{figure} & \env{equation}\\
             表格 & 图片 & 公式 \\\hline
             \env{itemize} & \env{enumerate} & \env{description}\\
@@ -304,8 +304,8 @@ $V = \frac{4}{3}\pi r^3$
     \end{itemize}
     \begin{figure}[htpb]
         \centering
-        \includegraphics[width=0.2\linewidth]{pic/hit.png}
-        \caption{这个校徽就不是矢量图, 差评\footnote{如果谁哪里有矢量的校徽可以提个 \href{https://github.com/syvshc/HITBeamer/issues}{issue}}}
+        \includegraphics[width=0.2\linewidth]{pic/hitlogo.pdf}
+        \caption{\CJKsout{这个校徽就不是矢量图, 差评. }现在这个是矢量图了\footnote{从 \url{http://100.hit.edu.cn/xqgwsy/xqbs} 这里的 VIS 中扒下来的}}
     \end{figure}
     
 \end{frame}
@@ -322,7 +322,7 @@ $V = \frac{4}{3}\pi r^3$
         \]
     \end{definition}
     \begin{block}{注}
-        可使用的定理环境为 theorem, corollary, definition, definitions, fact, example, 与 examples  
+        可使用的定理环境为 \env{theorem}, \env{corollary}, \env{definition}, \env{definitions}, \env{fact}, \env{example}, 与 \env{examples}  
     \end{block}
 \end{frame}
 

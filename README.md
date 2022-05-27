@@ -4,7 +4,10 @@
 
 ## 编译环境
 
-已知可行的编译环境为 `Win10 20H2` + `TeX Live 2021`
+已知可行的编译环境为 
+
+* `Win11 21H1` + `TeX Live 2022`
+* `Arch Linux` + TeX Live 2022`
 
 ## 字体
 
@@ -16,13 +19,12 @@ fc-cache -fv
 
 来刷新字体缓存, 即可使用这两种字体.
 
-如果不想使用这两种字体, 可以自行选择使用的字体或者直接注释 `packages.sty` 中的
+如果不想使用这两种字体, 可以取消 `hit-extra` 的选项 `siyuan` 和 `fira`，即
 
 ```latex
-\setCJKmainfont{Source Han Sans SC}
-\setCJKsansfont{Source Han Sans SC}
-\setmonofont{Fira Code}
-\setmainfont{FiraGO}
+\usepackage[minted, fira, siyuan]{hit-extra}
+        ↓
+\usepackage[minted]{hit-extra}
 ```
 
 ## `minted` 宏包
@@ -36,7 +38,7 @@ fc-cache -fv
 
 如果是 [`Anaconda`](https://www.anaconda.com/) 用户, 可以将第 2 步中的 `pip` 改为 `conda` 来使用 `conda` 安装.
 
-如果不想使用 `minted` 宏包, 那么要在 `packages.tex` 中注释所有带有 `mint` 的语句即可. 原模板同样提供了 `listings` 宏包来排版代码, 在 `slide.tex` 中同样给了[示例](https://github.com/syvshc/HITBeamer/blob/master/slide.tex#L220)
+如果不想使用 `minted` 宏包, 可以取消 `hit-extra` 的 `minted` 选项以及删除 `slide.tex` 中的带 `mint` 的语句即可. 原模板同样提供了 `listings` 宏包来排版代码, 在 `slide.tex` 中同样给了[示例](https://github.com/syvshc/HITBeamer/blob/master/slide.tex#L220)
 
 ## 编译方法
 

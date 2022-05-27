@@ -1,0 +1,103 @@
+\ProvidesPackage{hit-extra}[2022/05/27 v0.2 a beamer template for HIT]
+
+\newif\ifhit@minted
+\newif\ifhit@fira
+\newif\ifhit@siyuan
+
+\DeclareOption{minted}{%
+  \hit@mintedtrue
+}
+
+\DeclareOption{fira}{%
+  \hit@firatrue
+}
+
+\DeclareOption{siyuan}{%
+  \hit@siyuantrue
+}
+% \ExecuteOptions{minted,fira,siyuan}
+\ProcessOptions\relax
+
+\RequirePackage{ctex}
+\hypersetup{colorlinks,linkcolor=,urlcolor=magenta}
+% \RequirePackage[T1]{fontenc}
+\RequirePackage{xeCJKfntef}
+% other packages
+\RequirePackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
+\RequirePackage{graphicx,pstricks,listings,stackengine}
+\RequirePackage{physics, tikz}
+\usefonttheme[stillsansserifmath]{serif}
+\RequirePackage[bold-style=ISO]{unicode-math}
+
+\newcommand{\hit@fontnotfound}[1]
+  {
+    \PackageWarning{hit-extra}{Font ``#1'' not found, \MessageBreak use default font instead.}
+  }
+
+\ifhit@fira
+  % \setmathfont{Fira Math}
+  \IfFontExistsTF{Fira Math}
+    {\setmathfont{FiraMath-Regular.otf}}
+    {\hit@fontnotfound{Fira Math}}
+  \IfFontExistsTF{Fira Code}
+    {
+      \setmonofont{Fira Code}
+    }
+    {\hit@fontnotfound{Fira Code}}
+  \IfFontExistsTF{FiraGO}
+    {
+      \setmainfont{FiraGO}
+    }
+    {\hit@fontnotfound{FiraGO}}
+\fi
+
+\ifhit@siyuan
+  \IfFontExistsTF{Source Han Sans SC}
+  {
+    \setCJKmainfont{Source Han Sans SC}
+    \setCJKsansfont{Source Han Sans SC}
+  }
+  {
+    \IfFontExistsTF{Noto Sans CJK SC}
+      { 
+        \setCJKmainfont{Noto Sans CJK SC}
+        \setCJKsansfont{Noto Sans CJK SC}
+      }{\hit@fontnotfound{Source Han Sans SC}}
+  }
+\fi
+
+\renewcommand{\footnotesize}{\fontsize{6}{7.2}\selectfont}
+\ifhit@minted 
+  \RequirePackage{minted}
+  \usemintedstyle{autumn}
+  \setminted{
+      fontsize    = \fontsize{8}{9.6}\selectfont,
+      frame       = single,
+      linenos     = true,
+      breaklines  = true,
+      breakanywhere = true,
+      autogobble  = true
+  }
+\fi
+
+% \RequirePackage[shortlabels]{enumitem}
+% defs
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+
+\def\cmd#1{\texttt{\color{red}\fontsize{8}{9.6}\selectfont $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\fontsize{8}{9.6}\selectfont #1}}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{halfgray}{gray}{0.55}
+
+\lstset{
+    basicstyle=\ttfamily\fontsize{8}{9.6}\selectfont,
+    keywordstyle=\bfseries\color{deepblue},
+    emphstyle=\ttfamily\color{deepred},    % Custom highlighting style
+    stringstyle=\color{deepgreen},
+    numbers=left,
+    numberstyle=\fontsize{7}{8.4}\selectfont\color{halfgray},
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    frame=shadowbox,
+}

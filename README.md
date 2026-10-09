@@ -1,6 +1,30 @@
+> **⚠️ 本仓库已停止维护。**
+> 主题已完整移植到新仓库 [**hiTouyingBeamer**](https://github.com/hithesis/hiTouyingBeamer)，
+> 用 `\usetheme[classic]{hit}` 即可得到与本模板一致的经典观感，并持续跟进新的 TeX Live。
+> 旧代码在今天的 TeX Live（2024 及以后）下已无法开箱编译：`hit-extra` 会强制加载
+> 很多发行版默认不装的 `pstricks`，Fira Math 按文件名加载也已失效。请移步新仓库。
+
 # HITBeamer
 
+
 基于 [THU-Beamer-Theme](https://github.com/Trinkle23897/THU-Beamer-Theme) 删删改改而成的 :bug:
+
+## 迁移到新仓库
+
+[hiTouyingBeamer](https://github.com/hithesis/hiTouyingBeamer) 完整移植了本模板：
+smoothbars 顶栏、两行页脚、circle 列表、编号圆球目录、`\section` / `\subsection` 后自动
+插目录帧等全部保留。旧文档只需改导言区那几行，正文一般不用修改：
+
+```latex
+% 旧（本仓库）
+\documentclass{beamer}
+\usepackage{hit-style}
+\usepackage[minted,fira,siyuan]{hit-extra}
+
+% 新（hiTouyingBeamer）
+\documentclass[aspectratio=169]{ctexbeamer} % 默认 4:3 或者显式写 aspectratio=43
+\usetheme[classic]{hit}                     % classic 就是本仓库的经典效果
+```
 
 ## 编译环境
 
